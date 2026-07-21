@@ -12,6 +12,7 @@ public class Main {
 
         Aleins a1 = new Aleins();
         Laptop l1 = new Laptop();
+        l1.setLid(1);
         l1.setBrand("Asus");
         l1.setModel("ROG");
         l1.setRam(16);
@@ -34,6 +35,7 @@ public class Main {
 //        cfg.configure();
         SessionFactory sf = new Configuration()
                 .addAnnotatedClass(org.example.Aleins.class)
+                .addAnnotatedClass(org.example.Laptop.class)
                 .configure()
                 .buildSessionFactory();       //cfg.buildSessionFactory();
         Session session = sf.openSession();
@@ -41,7 +43,9 @@ public class Main {
 
         //s1 = session.get(Student.class,3);
         Transaction transaction = session.beginTransaction();
+        session.persist(l1);
         session.persist(a1);
+
         //transaction is needed to add the data it is not required for fetching the data
        // session.remove(s1); //to delete a record
         // to fetch the data just commment out the treansaction

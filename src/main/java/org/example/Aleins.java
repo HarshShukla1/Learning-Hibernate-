@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Aleins {
@@ -12,6 +9,7 @@ public class Aleins {
     @Column(name = "Name")
     private String aname;
     private String tech;
+    @OneToOne
     private Laptop laptop;
     public int getAid() {
         return aid;
