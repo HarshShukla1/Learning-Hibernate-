@@ -2,6 +2,8 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Aleins {
     @Id
@@ -9,8 +11,8 @@ public class Aleins {
     @Column(name = "Name")
     private String aname;
     private String tech;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy = "alein")
+    private List <Laptop> laptops;
     public int getAid() {
         return aid;
     }
@@ -35,13 +37,14 @@ public class Aleins {
         this.tech = tech;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptops() {
+        return laptops;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
     }
+
 
     @Override
     public String toString() {
@@ -49,7 +52,7 @@ public class Aleins {
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
-                ", laptop=" + laptop +
+                ", laptop=" + laptops +
                 '}';
     }
 }

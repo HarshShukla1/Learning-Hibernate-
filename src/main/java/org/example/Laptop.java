@@ -3,6 +3,7 @@ package org.example;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Laptop {
@@ -11,6 +12,9 @@ public class Laptop {
     private String brand;
     private String model;
     private int ram;
+
+    @ManyToOne
+    private Aleins alein;
 
     public int getLid() {
         return lid;
@@ -44,6 +48,13 @@ public class Laptop {
         this.ram = ram;
     }
 
+    public Aleins getAlein() {
+        return alein;
+    }
+
+    public void setAlein(Aleins alein) {
+        this.alein = alein;
+    }
 
     @Override
     public String toString() {

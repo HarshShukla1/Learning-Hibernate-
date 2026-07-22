@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -16,10 +18,20 @@ public class Main {
         l1.setBrand("Asus");
         l1.setModel("ROG");
         l1.setRam(16);
+
+        Laptop l2 = new Laptop();
+        l2.setLid(2);
+        l2.setBrand("Lenovo");
+        l2.setModel("Thinkpad");
+        l2.setRam(16);
+
         a1.setAid(100);
         a1.setAname("Harsh");
         a1.setTech("java");
-        a1.setLaptop(l1);
+        a1.setLaptops(Arrays.asList(l1,l2));
+
+        l1.setAlein(a1);
+        l2.setAlein(a1);
 
 
 //    Student s1 = new Student();
@@ -45,6 +57,7 @@ public class Main {
         Transaction transaction = session.beginTransaction();
         session.persist(l1);
         session.persist(a1);
+        session.persist(l2);
 
         //transaction is needed to add the data it is not required for fetching the data
        // session.remove(s1); //to delete a record
