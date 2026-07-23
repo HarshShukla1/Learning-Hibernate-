@@ -25,13 +25,38 @@ public class Main {
         l2.setModel("Thinkpad");
         l2.setRam(16);
 
+        Laptop l3 = new Laptop();
+        l3.setLid(3);
+        l3.setBrand("Asus");
+        l3.setModel("ROG");
+        l3.setRam(32);
+
+        Aleins a2 = new Aleins();
+
         a1.setAid(100);
         a1.setAname("Harsh");
         a1.setTech("java");
-        a1.setLaptops(Arrays.asList(l1,l2));
 
-        l1.setAlein(a1);
-        l2.setAlein(a1);
+        a2.setAid(101);
+        a2.setAname("Ayush");
+        a2.setTech("c++");
+
+        Aleins a3 = new Aleins();
+
+        a3.setAid(102);
+        a3.setAname("Abhishek");
+        a3.setTech("REACT");
+
+
+        a1.setLaptops(Arrays.asList(l1,l2));
+        a2.setLaptops(Arrays.asList(l2,l3));
+        a3.setLaptops(Arrays.asList(l1));
+
+        l1.setAleins(Arrays.asList(a1,a2));
+        l2.setAleins(Arrays.asList(a2,a3));
+        l3.setAleins(Arrays.asList(a1));
+
+
 
 
 //    Student s1 = new Student();
@@ -57,13 +82,19 @@ public class Main {
         Transaction transaction = session.beginTransaction();
         session.persist(l1);
         session.persist(a1);
+        session.persist(a2);
+        session.persist(a3);
         session.persist(l2);
+        session.persist(l3);
 
         //transaction is needed to add the data it is not required for fetching the data
        // session.remove(s1); //to delete a record
         // to fetch the data just commment out the treansaction
        // session.persist(s1);
         transaction.commit();
+
+        Aleins a5 = session.get(Aleins.class,102);
+        System.out.println(a5);
 
         //s2 = session.get(Student.class,3); //to access a particular record
         session.close();
