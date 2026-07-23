@@ -41,20 +41,14 @@ public class Main {
         a2.setAname("Ayush");
         a2.setTech("c++");
 
-        Aleins a3 = new Aleins();
 
-        a3.setAid(102);
-        a3.setAname("Abhishek");
-        a3.setTech("REACT");
 
 
         a1.setLaptops(Arrays.asList(l1,l2));
-        a2.setLaptops(Arrays.asList(l2,l3));
-        a3.setLaptops(Arrays.asList(l1));
+        a2.setLaptops(Arrays.asList(l3));
 
-        l1.setAleins(Arrays.asList(a1,a2));
-        l2.setAleins(Arrays.asList(a2,a3));
-        l3.setAleins(Arrays.asList(a1));
+
+
 
 
 
@@ -83,7 +77,7 @@ public class Main {
         session.persist(l1);
         session.persist(a1);
         session.persist(a2);
-        session.persist(a3);
+
         session.persist(l2);
         session.persist(l3);
 
@@ -93,8 +87,8 @@ public class Main {
        // session.persist(s1);
         transaction.commit();
 
-        Aleins a5 = session.get(Aleins.class,102);
-        System.out.println(a5);
+        Aleins a5 = session.get(Aleins.class,101);
+        //System.out.println(a5);
 
         //s2 = session.get(Student.class,3); //to access a particular record
         session.close();

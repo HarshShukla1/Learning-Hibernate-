@@ -11,7 +11,7 @@ public class Aleins {
     @Column(name = "Name")
     private String aname;
     private String tech;
-    @ManyToMany
+    @OneToMany
     private List <Laptop> laptops;
     public int getAid() {
         return aid;
